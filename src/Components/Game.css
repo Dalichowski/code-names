@@ -1,0 +1,124 @@
+.form{
+    text-align: center;
+}
+.container{
+    margin-top: 5%;
+    font-size: 150%;
+}
+
+.searchSection{
+    margin-top: 5%;
+    margin-left: 50%;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    margin-left: 5%;
+    margin-right: 5%;
+    justify-content: space-around;
+
+}
+
+.colorChoice{
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+select{
+    width: 10px;
+}
+/*STANDARD CARDS*/
+.col-2dot4{
+    background-color: rgb(180, 180, 180);
+    height: 130px;
+    width: 100px;
+    border: solid;
+    border-radius: 20px;
+    text-align: center;
+    color: black;
+    text-shadow: 1px 1px rgb(231, 231, 231);
+    padding-top: 1.5%;
+    font-size: 170%;
+}
+.col-2dot4 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 20%;
+    flex: 0 0 20%;
+    max-width: 20%;
+}
+
+/*BLUE CARDS*/
+.col-2dot4-Blue{
+    background-color: rgb(119, 119, 230);
+    height: 130px;
+    width: 100px;
+    border: solid;
+    border-radius: 20px;
+    text-align: center;
+    color: black;
+    text-shadow: 1px 1px white;
+    padding-top: 1.5%;
+    font-size: 170%;
+}
+
+
+.col-2dot4-Blue {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 20%;
+    flex: 0 0 20%;
+    max-width: 20%;
+}
+
+/*YELLOW CARDS*/
+.col-2dot4-Yellow{
+    background-color: rgb(247, 247, 128);
+    height: 130px;
+    width: 100px;
+    border: solid;
+    border-radius: 20px;
+    text-align: center;
+    color: black;
+    text-shadow: 2px 2px white;
+    padding-top: 1.5%;
+    font-size: 170%;
+}
+
+
+.col-2dot4-Yellow {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 20%;
+    flex: 0 0 20%;
+    max-width: 20%;
+}
+.blue{background-color: rgb(119, 119, 230);}
+.yellow{background-color: rgb(247, 247, 128);}
+.red{background-color: rgb(219, 69, 69)}
+/*RED CARDS*/
+.col-2dot4-Red{
+    background-color: rgb(219, 69, 69);
+    height: 130px;
+    width: 100px;
+    border: solid;
+    border-radius: 20px;
+    text-align: center;
+    color: black;
+    text-shadow: 1px 1px white;
+    padding-top: 1.5%;
+    font-size: 170%;
+}
+
+
+.col-2dot4-Red {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 20%;
+    flex: 0 0 20%;
+    max-width: 20%;
+}
+
+input:checked {
+    background-color: black;
+}
