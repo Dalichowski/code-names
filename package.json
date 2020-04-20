@@ -2,6 +2,9 @@
   "name": "code-names",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "10.15.x"
+  },
   "dependencies": {
     "pubnub": "^4.27.4",
     "react": "^16.8.6",
