@@ -12,6 +12,7 @@ class Game extends Component{
         this.limitCards = typeof limitCards === 'number' ? limitCards : 25;
 
         this.state = {
+            whosTurn: this.props.myTurn,
             userInput:'',
             items: [],
             checkedBlue: false,
@@ -25,28 +26,35 @@ class Game extends Component{
             redArr: []
         };
     }
-
+    
+    
 
     handleClickBlue(i){
         this.setState({
             checkedBlue: !this.state.checkedBlue,
             indexBlue: i,
-            blueArr: [...this.state.blueArr, this.state.indexBlue]
+            blueArr: [...this.state.blueArr, this.state.indexBlue],
+            whosTurn: !this.state.whosTurn
         })
+        console.log(this.state.checkedBlue, this.state.whosTurn)
     }
     
     handleClickYellow(i){
         this.setState(prevState=>({
             checkedYellow: !prevState.checkedYellow,
             indexYellow: i,
-            yellArr: [...this.state.yellArr, this.state.indexYellow]
+            yellArr: [...this.state.yellArr, this.state.indexYellow],
+            whosTurn: !this.props.myTurn
+
         }))        
     }
     handleClickRed(i){
         this.setState(prevState=>({
             checkedRed: !prevState.checkedRed,
             indexRed: i,
-            redArr: [...this.state.redArr, this.state.indexRed]
+            redArr: [...this.state.redArr, this.state.indexRed],
+            whosTurn: !this.props.myTurn
+
         }))        
     }
 
@@ -66,10 +74,11 @@ class Game extends Component{
     }
 
     deleteTodo(event){
-        //event.preventDefault();
+        event.preventDefault();
         let array = this.state.items;
         let index = array.indexOf(event);
         array.splice(index, 1);
+        index--;
         this.setState({
             items: array
         });
@@ -77,7 +86,17 @@ class Game extends Component{
     }
     clearAll = () => {
         this.setState({
-            items: []
+            userInput:'',
+            items: [],
+            checkedBlue: false,
+            checkedYellow: false,
+            checkedRed: false,
+            indexBlue:'',
+            blueArr: [],
+            indexYellow:'',
+            yellArr: [],
+            indexRed:'',
+            redArr: []
         })
     }
     
@@ -94,8 +113,8 @@ class Game extends Component{
                 <div
                     className= {`col-2dot4
                         ${blueArr.includes(item.toString()) && this.state.checkedBlue === true ? 'col-2dot4-Blue' : '' } 
-                        ${yelArr.includes(item.toString()) && this.state.checkedYellow === true ? 'col-2dot4-Yellow' : 'col-2dot4'}
-                        ${redArr.includes(item.toString()) && this.state.checkedRed === true? 'col-2dot4-Red' : 'col-2dot4'}
+                        ${yelArr.includes(item.toString()) && this.state.checkedYellow === true ? 'col-2dot4-Yellow' : ''}
+                        ${redArr.includes(item.toString()) && this.state.checkedRed === true ? 'col-2dot4-Red' : ''}
                     `}
                     key={item.toString()} 
                     id={item.toString()}
@@ -120,21 +139,21 @@ class Game extends Component{
                         {/* TURN BLUE */}
                         <div className="custom-control custom-switch">
                             <input type="checkbox" className="custom-control-input" id={item.toString()+'Blue'}
-                            onClick={this.handleClickBlue.bind(this, item.toString())} defaultChecked={this.state.checkedBlue}/>
+                            onClick={this.handleClickBlue.bind(this, item.toString())} />
                             <label className="custom-control-label" htmlFor={item.toString()+'Blue'}>Bleu</label>
                         </div>
                         &nbsp;
                         {/* {/* TURN YELLOW  */}
                         <div className="custom-control custom-switch">
                             <input type="checkbox" className="custom-control-input" id={item.toString()+'Yellow'}
-                            onClick={this.handleClickYellow.bind(this, item.toString())} defaultChecked={this.state.checkedYellow}/>
+                            onClick={this.handleClickYellow.bind(this, item.toString())} />
                             <label className="custom-control-label" htmlFor={item.toString()+'Yellow'}>Jaune</label>
                         </div>
                         &nbsp;
                         {/* {/* TURN RED  */}
                         <div className="custom-control custom-switch">
                             <input type="checkbox" className="custom-control-input" id={item.toString()+'Red'}
-                            onClick={this.handleClickRed.bind(this, item.toString())} defaultChecked={this.state.checkedRed}/>
+                            onClick={this.handleClickRed.bind(this, item.toString())} />
                             <label className="custom-control-label" htmlFor={item.toString()+'Red'}>Rouge</label>
                         </div>
 
@@ -147,10 +166,14 @@ class Game extends Component{
 
 
     render() {
+        let status;
+        // Change to current player's turn
+        status = `${this.state.whosTurn ? "À TON TOUR !" : "À SON TOUR !"}`;
         
         return (
             <div>
                 <h1 align="center">LE JEU</h1>
+                <p className="status-info">{status}</p>  
                 <form className="form">
                     <input
                         value={this.state.userInput} 

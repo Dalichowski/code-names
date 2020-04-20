@@ -23,7 +23,9 @@
     font-size: calc(10px + 2vmin);
     color: white;
   }
-  
+  .game{
+    text-align: center ;
+  }
   .App-link {
     color: #61dafb;
   }
@@ -31,6 +33,6 @@
       text-align: center;
   }
   
-  .title {
+  h1 {
       text-align: center;
   }

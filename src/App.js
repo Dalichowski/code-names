@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import Game from './Components/Game';
+import NavBar from './Components/NavBar'
 import PubNubReact from 'pubnub-react';
 import Swal from "sweetalert2";  
 import shortid  from 'shortid';
-import NavBar from './Components/NavBar';
-import PropTypes from 'prop-types';
-
-import './App.css';
-
  
 class App extends Component {
   constructor(props) {  
@@ -65,7 +61,7 @@ class App extends Component {
   onPressCreate = (e) => {
     // Create a random name for the channel
     this.roomId = shortid.generate().substring(0,5);
-    this.lobbyChannel = 'codeNames--' + this.roomId;
+    this.lobbyChannel = 'tictactoelobby--' + this.roomId;
 
     this.pubnub.subscribe({
       channels: [this.lobbyChannel],
@@ -76,7 +72,7 @@ class App extends Component {
   Swal.fire({
     position: 'top',
     allowOutsideClick: false,
-    title: 'Code d\'entrée (copier)',
+    title: 'Copier le code d\'entrée',
     text: this.roomId,
     width: 275,
     padding: '0.7em',
@@ -103,7 +99,7 @@ class App extends Component {
       position: 'top',
       input: 'text',
       allowOutsideClick: false,
-      inputPlaceholder: 'Coller le code d\'entrée',
+      inputPlaceholder: 'Coller ici',
       showCancelButton: true,
       confirmButtonColor: 'rgb(208,33,41)',
       confirmButtonText: 'OK',
@@ -127,12 +123,13 @@ class App extends Component {
   joinRoom = (value) => {
     this.roomId = value;
     this.lobbyChannel = 'tictactoelobby--' + this.roomId;
+    console.log(this.lobbyChannel)
 
     // Check the number of people in the channel
     this.pubnub.hereNow({
       channels: [this.lobbyChannel], 
     }).then((response) => { 
-        if(response.totalOccupancy < 2){
+        if(response.totalOccupancy < 4){
           this.pubnub.subscribe({
             channels: [this.lobbyChannel],
             withPresence: true
@@ -197,16 +194,11 @@ class App extends Component {
           <div className="title">
             <h1>Code Names des Copains</h1>
           </div>
-
           {
             !this.state.isPlaying &&
             <div className="game">
               <div className="board">
-                {/* <Board
-                    squares={0}
-                    onClick={index => null}
-                  />  
-                   */}
+
                 <div className="button-container">
                   <button 
                     className="btn btn-primary create-button "
@@ -233,7 +225,7 @@ class App extends Component {
               gameChannel={this.gameChannel} 
               isRoomCreator={this.state.isRoomCreator}
               myTurn={this.state.myTurn}
-              limitCards={PropTypes.number}
+              //limitCards={PropTypes.number}
             />
           }
         </div>

@@ -1,4 +1,6 @@
-#Code-Names-For-Friends
+# Realtime Tic Tac Toe Game in React
+
+> [React Tic Tac Toe](https://ocastroa.github.io/react-tictactoe)
 
 Want to develop a multiplayer game without having to worry about building your own realtime infrastructure? In this tutorial, you will learn how to do so by building a tic tac toe game in React. We will use [PubNub's React SDK](https://www.pubnub.com/docs/react-native-javascript/pubnub-javascript-sdk) to connect two players to a game channel. Every move the players makes in the board will be seen by both players in realtime! 
 
@@ -39,3 +41,11 @@ chmod +x dependencies.sh # Execute the script
   ```
 8) When the app opens, copy and paste http://localhost:3000 to another window. In one window, create a channel by pressing the 'Create' button and copy the room id. In the other window, press the 'Join' button and paste the room id in the input field. Press enter and the game will start. Place the 'X' piece in the window that you created the room and watch as the other window is updated in realtime. Play around with both windows until there is a winner or a tie game!
 
+
+## Build Your Own Realtime Tic Tac Toe Game in React
+
+To learn more about this project or if you want to build this project from scratch, check out the tutorial.
+
+  <a href="https://www.pubnub.com/blog/build-a-multiplayer-tic-tac-toe-game-in-react/?devrel_gh=react-tictactoe">
+    <img alt="PubNub Blog" src="https://i.imgur.com/aJ927CO.png" width=260 height=98/>
+  </a>
