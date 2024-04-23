@@ -9,7 +9,7 @@
     "pubnub": "^4.27.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1",
+    "react-scripts": "5.0.1",
     "shortid": "^2.2.15",
     "sweetalert2": "^8.19.0"
   },
