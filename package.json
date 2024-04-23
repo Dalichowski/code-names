@@ -6,7 +6,7 @@
     "node": "10.15.x"
   },
   "dependencies": {
-    "pubnub": "^4.27.4",
+    "pubnub": "^7.4.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
